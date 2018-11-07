@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Space App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Space Trips</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+            </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <h1>
+        Book Your Space Trip
+    </h1>
+
+    <div class="row">
+        <img src="src/main/resources/images/nasa-banner.jpg" alt="nasa">
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-4">
+
+            <h2>Choose Your Company</h2>
+            <div class="list-group">
+                <a href="#" class="list-group-item">SpaceX</a>
+                <a href="#" class="list-group-item">Blue Origin</a>
+            </div>
+
+        </div>
+
+
+
+        <div class="col-sm-4">
+
+            <form action="#" th:action="@{/moon}"  method="GET">
+            <h2> Choose Your Destination</h2>
+                <div class="list-group">
+                    <a th:href="${'/moon'}" class="list-group-item">Moon</a>
+                    <a th:href="${'/mars'}" class="list-group-item">Mars</a>
+                    <a th:href="${'/venus'}" class="list-group-item">Venus</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-4">
+
+            <h2> Choose Your Dates </h2>
+
+            <form >
+                <div class="form-group" >
+                    <label>Depart Date:</label>
+                    <input type="date" class="form-control" id="DepartDate">
+                </div>
+                <div class="form-group">
+                    <label>Return Date:</label>
+                    <input type="date" class="form-control" id="Depart Date">
+                </div>
+
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+        </div>
+
+    </div>
+</body>
+</html>
+</html>

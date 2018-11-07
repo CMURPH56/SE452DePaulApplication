@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
+ <title>Logging you in</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+ <div class="row">
+  <div class = "col-sm">
+   <center>
+ <h1>Please Login</h1>
+   </center>
+
+ <form action="#" th:action="@{/main}" th:object="${login}" method="GET">
+  <div class="form-group" >
+   <label for="email">Email address:</label>
+   <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+   <label for="email">User Name:</label>
+   <input type="email" class="form-control" id="user-name-label">
+  </div>
+
+  <div class="form-group">
+   <label for="pwd">Password:</label>
+   <input type="password" class="form-control" id="pwd">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+ </form>
+</div>
+
+  </div>
+</div>
+</div>
+
+</body>
+
+</html>
+</html>
