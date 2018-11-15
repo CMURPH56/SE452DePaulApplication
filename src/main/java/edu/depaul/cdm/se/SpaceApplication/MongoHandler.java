@@ -21,7 +21,6 @@ public class MongoHandler {
         try{
             MongoClientURI uri = new MongoClientURI("mongodb://user:password*1@ds235788.mlab.com:35788/mydb");
             MongoClient mongoClient = new MongoClient(uri);
-            //System.out.println("Cam");
             MongoDatabase database = mongoClient.getDatabase("mydb");
             MongoCollection<Document> collection = database.getCollection("test");
 
@@ -52,16 +51,9 @@ public class MongoHandler {
                     .append("Description", "Uranus is the seventh planet from the Sun. It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System. Uranus is similar in composition to Neptune, and both have bulk chemical compositions which differ from that of the larger gas giants Jupiter and Saturn.");
             documents.add(uranus);
 
-
             Document myDoc = collection.find(eq("Planet", "Pluto")).first();
-            System.out.println(myDoc.toJson());
-
             JSONObject jdoc = new JSONObject(myDoc.toJson());
-
             String name = jdoc.getString("Planet");
-            System.out.println(name);
-
-            System.out.println("left "+ collection.count());
 
         } catch (Exception e) {
             e.printStackTrace();

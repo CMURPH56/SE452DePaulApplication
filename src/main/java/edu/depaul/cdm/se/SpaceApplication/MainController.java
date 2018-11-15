@@ -5,10 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.Optional;
-import java.util.*;
 
 @Controller
 public class MainController {
@@ -16,12 +15,13 @@ public class MainController {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Autowired
+    private PlanetRepository planetRepository;
 
-    @GetMapping("/main")
+    @GetMapping("/")
      public String homepage(){
         return "main";
     }
-
 
     @GetMapping(path="/all")
     public @ResponseBody void getAllMembers(){
@@ -34,17 +34,10 @@ public class MainController {
         return memberRepository.findById(UserName);
     }
 
-    @GetMapping(path="/")
-    public String loginPage(Model model){
-        //System.out.println("Hello");
-        model.addAttribute("login", new Login());
-        return "login";
-    }
-
     @GetMapping(path="/moon")
     public String moonPage(Model model){
         model.addAttribute("moon", new Moon());
-        return "moon";
+        return "Neptune";
     }
     @GetMapping(path="/mars")
     public String marsPage(Model model){
@@ -58,23 +51,45 @@ public class MainController {
         return "venus";
     }
 
-
-    // Add users to database
-    @PostMapping(path = "/login")
-    public String loginSubmit(@ModelAttribute Login login){
-        return "result";
+    @GetMapping(path = "/login")
+    public String loginPage(Model model) {
+        System.out.println("login");
+        model.addAttribute("member", new Members());
+        return "login";
     }
 
+    @PostMapping(path = "/new_member")
+    public String loginSubmit(Model model, @ModelAttribute Members member){
+        memberRepository.save(member);
+        model.addAttribute("members", memberRepository.findAll());
+        return "members";
+    }
 
     @GetMapping(path="/count")
     public @ResponseBody long getNumberOfMembers(){
             return memberRepository.count();
     }
 
-
     @GetMapping(path="/members")
-    public @ResponseBody List getMembers(){
-        return memberRepository.findAll();
+    public String getMembers(Model model){
+        model.addAttribute("members", memberRepository.findAll());
+        return "members";
+    }
+
+    /*
+    @GetMapping("/planet")
+    public String planetForm(Model model){
+        model.addAttribute("planet", new Planets());
+        return "planet";
+    }
+    */
+    @GetMapping("/allPlanet")
+    public @ResponseBody void getAllPlanets(){
+        /*
+        System.out.println(planetRepository.findByName("Venus"));
+        System.out.println("help");
+        System.out.println(planetRepository.count());
+        System.out.println(planetRepository.findAll());
+        */
     }
 }
-
