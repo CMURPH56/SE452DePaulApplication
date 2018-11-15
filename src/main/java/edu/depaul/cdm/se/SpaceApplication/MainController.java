@@ -1,6 +1,7 @@
 package edu.depaul.cdm.se.SpaceApplication;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ public class MainController {
     private MemberRepository memberRepository;
 
     @Autowired
-    private PlanetRepository planetRepository;
+    private CustomerRepository planetRepository;
 
     @GetMapping("/")
      public String homepage(){
@@ -29,6 +30,9 @@ public class MainController {
         //return memberRepository.findAll();
     }
 
+
+
+
     @GetMapping(path="find")
     public @ResponseBody Optional<Members> checkMember(@RequestParam String UserName){
         return memberRepository.findById(UserName);
@@ -38,11 +42,6 @@ public class MainController {
     public String moonPage(Model model){
         model.addAttribute("moon", new Moon());
         return "Neptune";
-    }
-    @GetMapping(path="/mars")
-    public String marsPage(Model model){
-        model.addAttribute("mars", new Mars());
-        return "mars";
     }
 
     @GetMapping(path="/venus")
@@ -75,21 +74,10 @@ public class MainController {
         model.addAttribute("members", memberRepository.findAll());
         return "members";
     }
-
-    /*
-    @GetMapping("/planet")
-    public String planetForm(Model model){
-        model.addAttribute("planet", new Planets());
-        return "planet";
-    }
-    */
-    @GetMapping("/allPlanet")
-    public @ResponseBody void getAllPlanets(){
-        /*
-        System.out.println(planetRepository.findByName("Venus"));
-        System.out.println("help");
-        System.out.println(planetRepository.count());
+    @GetMapping(path="/allPlanets")
+    public  String getAllPlanets(Model model){
+        model.addAttribute("venus", new Customer());
         System.out.println(planetRepository.findAll());
-        */
+        return "venus";
     }
 }
