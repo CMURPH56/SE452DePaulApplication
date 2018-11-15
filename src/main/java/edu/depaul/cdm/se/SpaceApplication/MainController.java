@@ -38,17 +38,6 @@ public class MainController {
         return memberRepository.findById(UserName);
     }
 
-    @GetMapping(path="/moon")
-    public String moonPage(Model model){
-        model.addAttribute("moon", new Moon());
-        return "Neptune";
-    }
-
-    @GetMapping(path="/venus")
-    public String venusPage(Model model){
-        model.addAttribute("venus", new Venus());
-        return "venus";
-    }
 
     @GetMapping(path = "/login")
     public String loginPage(Model model) {
@@ -74,10 +63,22 @@ public class MainController {
         model.addAttribute("members", memberRepository.findAll());
         return "members";
     }
-    @GetMapping(path="/allPlanets")
-    public  String getAllPlanets(Model model){
-        model.addAttribute("venus", new Customer());
+    @GetMapping(path="/venus")
+    public  String getVenus(Model model){
+        model.addAttribute("planets", planetRepository.findByFirstName("Venus"));
         System.out.println(planetRepository.findAll());
         return "venus";
     }
+    @GetMapping(path="/neptune")
+    public String getNeptune(Model model){
+        model.addAttribute("planets", planetRepository.findByFirstName("Neptune"));
+        return "Neptune";
+    }
+    @GetMapping(path="/mars")
+    public String getMars(Model model){
+        model.addAttribute("planets", planetRepository.findByFirstName("Mars"));
+        return "mars";
+    }
+
+
 }

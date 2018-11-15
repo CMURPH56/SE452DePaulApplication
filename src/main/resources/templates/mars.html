@@ -11,8 +11,13 @@
 
 
 <body>
-<h1>Mars</h1>
-<h3> Testing </h3>
+<tr th:each="planet : ${planets}">
+    <div th:if="${planet.firstName == 'Mars'}">
+        <div th:text="${planet.firstName}">planet</div>
+        <div th:text="${planet.lastName}">Planet</div>
+    </div>
+</tr>
+
 </body>
 </html>
 </html>

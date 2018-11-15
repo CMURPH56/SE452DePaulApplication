@@ -9,8 +9,13 @@
     </head>
 
     <body>
-        <h1>Neptune</h1>
-    <p>Neptune is the eighth and farthest known planet from the Sun in the Solar System. In the Solar System, it is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet.</p>
+    <tr th:each="planet : ${planets}">
+        <div th:if="${planet.firstName == 'Neptune'}">
+            <div th:text="${planet.firstName}">planet</div>
+            <div th:text="${planet.lastName}">Planet</div>
+        </div>
+    </tr>
+
     </body>
 </html>
 </html>

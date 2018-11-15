@@ -18,6 +18,13 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    public String getFirstName(){
+        return this.firstName;
+    }
+    public String getLastName(){
+        return this.lastName;
+    }
+
     @Override
     public String toString() {
         return String.format(

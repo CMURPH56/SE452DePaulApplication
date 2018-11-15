@@ -11,17 +11,13 @@
 
 
 <body>
-<h1>Venus</h1>
-<p>
-    Venus is the second planet from the Sun, orbiting it every 224.7 Earth days. It has the longest rotation period of any planet in the Solar System and rotates in the opposite direction to most other planets. It does not have any natural satellites. It is named after the Roman goddess of love and beauty.
-</p>
 
-
-<tr th:each="planet : ${planetRepository.findAll()}">
-    <td><span th:text="${planet.name}">Email</span></td>
+<tr th:each="planet : ${planets}">
+    <div th:if="${planet.firstName == 'Venus'}">
+        <div th:text="${planet.firstName}">planet</div>
+        <div th:text="${planet.lastName}">Planet</div>
+    </div>
 </tr>
-
-<p> this is a test</p>
 
 </body>
 </html>
